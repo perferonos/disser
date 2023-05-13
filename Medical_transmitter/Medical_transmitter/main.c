@@ -383,7 +383,7 @@ ISR (TIMER1_COMPA_vect)
 	{
 		char buff[100];
 		getSupposedData();
-		sprintf(buff, "%d.%d.%d\r", SAD, DAD, pulse);
+		sprintf(buff, "%s;%d;%d;%d\0", DEVICE_ID, SAD, DAD, pulse);
 		USART_SendString(buff);
 		memset(buff,0,100);
 	}
@@ -422,7 +422,7 @@ int main(void)
 	setSettings(settingsExample);
 	getSupposedData();
 	sendFlag = false;
-	sprintf(_buffer, "%d.%d.%d sp: %d, per: %d\r", SAD, DAD, pulse, spans[iter], periods[iter]);
+	sprintf(_buffer, "%s;%d;%d;%d;%d;%d\0", DEVICE_ID, SAD, DAD, pulse, spans[iter], periods[iter]);
 	USART_SendString(_buffer);
 	memset(_buffer,0,100);
 	/*
@@ -442,7 +442,7 @@ int main(void)
 		
 		if (sendFlag == true)
 		{
-			sprintf(_buffer, "%d.%d.%d", SAD, DAD, pulse);
+			sprintf(_buffer, "%s;%d;%d;%d", DEVICE_ID, SAD, DAD, pulse);
 			sendFlag = false;
 			TCPClient_Send(_buffer);
 			_delay_ms(600);

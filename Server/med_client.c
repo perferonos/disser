@@ -8,10 +8,10 @@
 #include <netinet/in.h>
 #include <sys/socket.h>
 #include <arpa/inet.h>
-#define PORT "3845" // порт для подключения клиентов
+#define PORT "12345" // порт для подключения клиентов
 
 #define MAXDATASIZE 100 // максимальная длина принимаемых за раз данных
-#define SERV_ADDR "127.0.0.1"
+#define SERV_ADDR "192.168.3.3"
 
 // получить sockaddr, IPv4 или IPv6:
 void *get_in_addr(struct sockaddr *sa)
